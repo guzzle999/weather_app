@@ -16,7 +16,7 @@ def get_coordinates(city_name):
         lat = data["results"][0]["latitude"]
         lon = data["results"][0]["longitude"]
 
-        # ดึงชื่อเมืองที่ API หาเจอจริงๆ และประเทศ:
+        # ดึงชื่อเมืองที่ API หาเจอ และประเทศ:
         actual_name = data["results"][0].get("name", city_name)
         country = data["results"][0].get("country", "ไม่ระบุประเทศ")
         return (lat, lon, actual_name, country), None

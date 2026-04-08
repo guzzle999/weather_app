@@ -14,7 +14,7 @@ def index():
     if request.method == 'POST':
         city_input = request.form.get('city') # รับชื่อเมืองจากช่องกรอกข้อมูลในเว็บ
 
-        # --- ตรรกะการตรวจสอบเหมือนเดิมเลยค่ะ ---
+        # --- การตรวจสอบ ---
         if not city_input or not city_input.strip():
             error_message = "กรุณาระบุชื่อเมือง"
         elif city_input.strip().isdigit():
@@ -34,7 +34,7 @@ def index():
                 else:
                     temp_celsius = convertTocelsius(weather_info["temp_f"])
                     
-                    # ถ้าทุกอย่างสำเร็จ จัดเตรียมข้อมูลใส่ตัวแปร weather_data เพื่อส่งไปที่หน้าเว็บ
+                    # จัดเตรียมข้อมูลใส่ตัวแปร weather_data เพื่อส่งไปที่หน้าเว็บ
                     weather_data = {
                         "city": actual_name,
                         "country": country,
@@ -49,5 +49,5 @@ def index():
     return render_template('index.html', weather_data=weather_data, error_message=error_message)
 
 if __name__ == '__main__':
-    # รันเซิร์ฟเวอร์ เปิดโหมด debug เวลามี error จะได้เห็นชัดๆ และไม่ต้องรีสตาร์ทเซิร์ฟเวอร์บ่อยๆ
+    # รันเซิร์ฟเวอร์ เปิดโหมด debug เพื่อให้เห็นข้อผิดพลาดได้ง่ายขึ้น
     app.run(debug=True)
